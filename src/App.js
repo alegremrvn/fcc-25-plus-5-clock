@@ -47,6 +47,24 @@ class Clock extends React.Component {
   }
 
   render() {
+    let secondsToMMSS = (seconds) => {
+      let result = '';
+
+      let mm = String(Math.floor(seconds / 60));
+      if (mm.length === 2) {
+        result += mm + ':';
+      } else if (mm.length === 1) {
+        result += '0' + mm + ':';
+      }
+
+      let ss = String(seconds % 60);
+      if (ss.length === 2) {
+        result += ss;
+      } else if (ss.length === 1) {
+        result += '0' + ss;
+      }
+    }
+
     return (
       <div>
         <div>

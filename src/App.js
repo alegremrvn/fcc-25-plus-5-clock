@@ -2,11 +2,17 @@ import React from 'react';
 import './App.css';
 import beep from './Bomb-SoundBible.com-891110113.mp3';
 
+let interval;
+
 class Clock extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-
+      breakLength: 5,
+      sessionLength: 25,
+      timerLabel: 'Session',
+      timeLeftInSeconds: 25 * 60,
+      status: 'initial'
     };
     this.handleBreakDecrement = this.handleBreakDecrement.bind(this);
     this.handleBreakIncrement = this.handleBreakIncrement.bind(this);

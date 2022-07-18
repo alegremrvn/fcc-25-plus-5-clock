@@ -151,6 +151,9 @@ class Clock extends React.Component {
         </div>
 
         <audio id="beep" src={beep}></audio>
+
+        <hr />
+        <p>{this.state.status}</p>
       </div>
     );
   }

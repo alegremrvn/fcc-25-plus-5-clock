@@ -28,7 +28,7 @@ class Clock extends React.Component {
       this.setState({
         breakLength: this.state.breakLength - 1
       })
-    }
+    } 
   }
 
   handleBreakIncrement() {
@@ -87,6 +87,8 @@ class Clock extends React.Component {
       }
     }
 
+    let timeLeft = secondsToMMSS(this.state.timeLeftInSeconds);
+
     return (
       <div>
         <div>
@@ -108,8 +110,8 @@ class Clock extends React.Component {
         </div>
 
         <div>
-          <h2 id="timer-label"></h2>
-          <p id="time-left"></p>
+          <h2 id="timer-label">{this.state.timerLabel}</h2>
+          <p id="time-left">{timeLeft}</p>
           <button id="start_stop" onClick={this.handleStartStop}>start-stop</button>
           <button id="reset" onClick={this.handleReset}>reset</button>
         </div>

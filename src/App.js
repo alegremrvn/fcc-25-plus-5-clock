@@ -70,6 +70,20 @@ class Clock extends React.Component {
       this.setState({
         status: 'running'
       });
+    } else if (this.state.status === 'running') {
+      clearInterval(interval);
+      this.setState({
+        status: 'paused'
+      });
+    } else if (this.state.status === 'paused') {
+      interval = setInterval(() => {
+        this.setState({
+          timeLeftInSeconds: this.state.timeLeftInSeconds - 1
+        });
+      }, 1000);
+      this.setState({
+        status: 'running'
+      })
     }
   }
 

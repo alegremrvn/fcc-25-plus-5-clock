@@ -61,7 +61,16 @@ class Clock extends React.Component {
   }
 
   handleStartStop() {
-
+    if (this.state.status === 'initial') {
+      interval = setInterval(() => {
+        this.setState({
+          timeLeftInSeconds: this.state.timeLeftInSeconds - 1
+        })
+      }, 1000);
+      this.setState({
+        status: 'running'
+      });
+    }
   }
 
   handleReset() {

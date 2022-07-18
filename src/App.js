@@ -153,16 +153,18 @@ class Clock extends React.Component {
   }
 
   render() {
-    if (this.state.timeLeftInSeconds === 0 &&
-      this.state.timerLabel === 'Session') {
+    if (this.state.timeLeftInSeconds === 0) {
       document.getElementById('beep').play();
+    }
+
+    if (this.state.timeLeftInSeconds === -1 &&
+      this.state.timerLabel === 'Session') {
       this.setState({
         timeLeftInSeconds: this.state.breakLength * 60,
         timerLabel: 'Break'
       })
-    } else if (this.state.timeLeftInSeconds === 0 &&
+    } else if (this.state.timeLeftInSeconds === -1 &&
       this.state.timerLabel === 'Break') {
-      document.getElementById('beep').play();
       this.setState({
         timeLeftInSeconds: this.state.sessionLength * 60,
         timerLabel: 'Session'

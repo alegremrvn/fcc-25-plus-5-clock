@@ -92,15 +92,19 @@ class Clock extends React.Component {
         <div>
           <h2 id="break-label">Break Length</h2>
           <p id="break-length"></p>
-          <button id="break-decrement" onClick={this.handleBreakDecrement}>decrement</button>
-          <button id="break-increment" onClick={this.handleBreakIncrement}>increment</button>
+          <button id="break-decrement" onClick={this.handleBreakDecrement}>
+            decrement</button>
+          <button id="break-increment" onClick={this.handleBreakIncrement}>
+            increment</button>
         </div>
 
         <div>
           <h2 id="session-label">Session Length</h2>
           <p id="session-length"></p>
-          <button id="session-decrement" onClick={this.handleSessionDecrement}>decrement</button>
-          <button id="session-increment" onClick={this.handleSessionIncrement}>increment</button>
+          <button id="session-decrement" onClick={this.handleSessionDecrement}>
+            decrement</button>
+          <button id="session-increment" onClick={this.handleSessionIncrement}>
+            increment</button>
         </div>
 
         <div>

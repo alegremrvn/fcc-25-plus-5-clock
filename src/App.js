@@ -28,7 +28,20 @@ class Clock extends React.Component {
       this.setState({
         breakLength: this.state.breakLength - 1
       })
-    } 
+    } else if (this.state.status === 'paused' &&
+    this.state.breakLength > 1 &&
+    this.state.timerLabel === 'Session') {
+      this.setState({
+        breakLength: this.state.breakLength - 1
+      })
+    } else if (this.state.status === 'paused' &&
+    this.state.breakLength > 1 &&
+    this.state.timerLabel === 'Break') {
+      this.setState({
+        breakLength: this.state.breakLength - 1,
+        timeLeftInSeconds: (this.state.breakLength - 1) * 60
+      })
+    }
   }
 
   handleBreakIncrement() {
@@ -36,6 +49,19 @@ class Clock extends React.Component {
     this.state.breakLength < 60) {
       this.setState({
         breakLength: this.state.breakLength + 1
+      })
+    } else if (this.state.status === 'paused' &&
+    this.state.breakLength < 60 &&
+    this.state.timerLabel === 'Session') {
+      this.setState({
+        breakLength: this.state.breakLength + 1
+      })
+    } else if (this.state.status === 'paused' &&
+    this.state.breakLength < 60 &&
+    this.state.timerLabel === 'Break') {
+      this.setState({
+        breakLength: this.state.breakLength + 1,
+        timeLeftInSeconds: (this.state.breakLength + 1) * 60
       })
     }
   }
@@ -47,12 +73,38 @@ class Clock extends React.Component {
         sessionLength: this.state.sessionLength - 1,
         timeLeftInSeconds: (this.state.sessionLength - 1) * 60
       })
+    } else if (this.state.status === 'paused' &&
+    this.state.sessionLength > 1 &&
+    this.state.timerLabel === 'Break') {
+      this.setState({
+        sessionLength: this.state.sessionLength - 1
+      })
+    } else if (this.state.status === 'paused' &&
+    this.state.sessionLength > 1 &&
+    this.state.timerLabel === 'Session') {
+      this.setState({
+        sessionLength: this.state.sessionLength - 1,
+        timeLeftInSeconds: (this.state.sessionLength - 1) * 60
+      })
     }
   }
 
   handleSessionIncrement() {
     if (this.state.status === 'initial' &&
     this.state.sessionLength < 60) {
+      this.setState({
+        sessionLength: this.state.sessionLength + 1,
+        timeLeftInSeconds: (this.state.sessionLength + 1) * 60
+      })
+    } else if (this.state.status === 'paused' &&
+    this.state.sessionLength < 60 &&
+    this.state.timerLabel === 'Break') {
+      this.setState({
+        sessionLength: this.state.sessionLength + 1
+      })
+    } else if (this.state.status === 'paused' &&
+    this.state.sessionLength < 60 &&
+    this.state.timerLabel === 'Session') {
       this.setState({
         sessionLength: this.state.sessionLength + 1,
         timeLeftInSeconds: (this.state.sessionLength + 1) * 60

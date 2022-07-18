@@ -103,6 +103,8 @@ class Clock extends React.Component {
       } else if (ss.length === 1) {
         result += '0' + ss;
       }
+
+      return result;
     }
 
     let timeLeft = secondsToMMSS(this.state.timeLeftInSeconds);

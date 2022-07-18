@@ -23,19 +23,41 @@ class Clock extends React.Component {
   }
 
   handleBreakDecrement() {
-
+    if (this.state.status === 'initial' &&
+    this.state.breakLength > 1) {
+      this.setState({
+        breakLength: this.state.breakLength - 1
+      })
+    }
   }
 
   handleBreakIncrement() {
-
+    if (this.state.status === 'initial' &&
+    this.state.breakLength < 60) {
+      this.setState({
+        breakLength: this.state.breakLength + 1
+      })
+    }
   }
 
   handleSessionDecrement() {
-
+    if (this.state.status === 'initial' &&
+    this.state.sessionLength > 1) {
+      this.setState({
+        sessionLength: this.state.sessionLength - 1,
+        timeLeftInSeconds: (this.state.sessionLength - 1) * 60
+      })
+    }
   }
 
   handleSessionIncrement() {
-
+    if (this.state.status === 'initial' &&
+    this.state.sessionLength < 60) {
+      this.setState({
+        sessionLength: this.state.sessionLength + 1,
+        timeLeftInSeconds: (this.state.sessionLength + 1) * 60
+      })
+    }
   }
 
   handleStartStop() {

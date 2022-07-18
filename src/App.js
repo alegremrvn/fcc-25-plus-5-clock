@@ -74,7 +74,16 @@ class Clock extends React.Component {
   }
 
   handleReset() {
-
+    document.getElementById('beep').pause();
+    clearInterval(interval);
+    interval = undefined;
+    this.setState({
+      breakLength: 5,
+      sessionLength: 25,
+      timerLabel: 'Session',
+      timeLeftInSeconds: 25 * 60,
+      status: 'initial'
+    });
   }
 
   render() {
